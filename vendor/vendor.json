@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "6cf5744a041a0022271cefed95ba843f6d87fd51",
+			"revisionTime": "2016-08-16T17:40:47Z"
+		},
+		{
+			"checksumSHA1": "HwtJ+1A2niKhvnG1qUZJz+8UdwQ=",
+			"path": "github.com/zserge/hid",
+			"revision": "8ac6f75332ed3cbdd4b5e48a10657dacc20643a4",
+			"revisionTime": "2016-09-07T01:39:44Z"
+		}
+	],
+	"rootPath": "github.com/thomasf/electro"
+}
