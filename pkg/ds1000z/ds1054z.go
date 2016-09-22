@@ -1,4 +1,4 @@
-package ds1054z
+package ds1000z
 
 import (
 	"fmt"
@@ -7,11 +7,11 @@ import (
 )
 
 // DS1054z .
-type DS1054Z struct {
+type DS1000Z struct {
 	*lxi.Conn
 }
 
-func (d *DS1054Z) Connect() error {
+func (d *DS1000Z) Connect() error {
 	err := d.Conn.Connect()
 	if err != nil {
 		return err

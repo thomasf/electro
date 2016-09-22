@@ -5,11 +5,12 @@ import (
 	"log"
 	"os"
 	"time"
+
 	"strconv"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/thomasf/electro/pkg/dp832"
-	"github.com/thomasf/electro/pkg/ds1054z"
+	"github.com/thomasf/electro/pkg/dp800"
+	"github.com/thomasf/electro/pkg/ds1000z"
 	"github.com/thomasf/electro/pkg/lxi"
 )
 
@@ -42,14 +43,14 @@ func main() {
 }
 
 func dp832Test(c *lxi.Conn) {
-	dp := dp832.DP832{Conn: c}
+	dp := dp800.DP800{Conn: c}
 	err := dp.Connect()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	for range time.Tick(100 * time.Millisecond) {
-		for _, CH := range []dp832.Channel{dp832.Ch1, dp832.Ch2, dp832.Ch3} {
+		for _, CH := range []dp800.Channel{dp800.Ch1, dp800.Ch2, dp800.Ch3} {
 			m, err := dp.Measure(CH)
 			if err != nil {
 				panic(err)
@@ -60,7 +61,7 @@ func dp832Test(c *lxi.Conn) {
 
 }
 
-func memdepth(ds *ds1054z.DS1054Z) float64 {
+func memdepth(ds *ds1000z.DS1000Z) float64 {
 	//	 Define number of horizontal grid divisions for DS1054Z
 	const hGrid = 12
 
@@ -104,7 +105,7 @@ func memdepth(ds *ds1054z.DS1054Z) float64 {
 }
 
 func ds1000Test(c *lxi.Conn) {
-	ds := &ds1054z.DS1054Z{Conn: c}
+	ds := &ds1000z.DS1000Z{Conn: c}
 	err := ds.Connect()
 	if err != nil {
 		panic(err)
@@ -122,16 +123,16 @@ channels:
 		}
 		log.Println(ch)
 		log.Println("memory depth", memdepth(ds))
-		    # Set WAVE parameters
-        tn.write("waveform:source " + channel)
-        time.sleep(1)
+		//# Set WAVE parameters
+		//  tn.write("waveform:source " + channel)
+		//   time.sleep(1)
 
-        tn.write("waveform:form asc")
-        time.sleep(1)
+		//    tn.write("waveform:form asc")
+		//   time.sleep(1)
 
-        # Maximum - only displayed data when osc. in RUN mode, or full memory data when STOPed
-        tn.write("waveform:mode max")
-        time.sleep(1)
+		//   # Maximum - only displayed data when osc. in RUN mode, or full memory data when STOPed
+		//  tn.write("waveform:mode max")
+		//  time.sleep(1)
 	}
 
 }

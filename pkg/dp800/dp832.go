@@ -1,4 +1,4 @@
-package dp832
+package dp800
 
 import (
 	"fmt"
@@ -8,12 +8,12 @@ import (
 	"github.com/thomasf/electro/pkg/lxi"
 )
 
-// DP832 .
-type DP832 struct {
+// DP800 .
+type DP800 struct {
 	*lxi.Conn
 }
 
-func (d *DP832) Connect() error {
+func (d *DP800) Connect() error {
 	err := d.Conn.Connect()
 	if err != nil {
 		return err
@@ -26,7 +26,7 @@ func (d *DP832) Connect() error {
 	return nil
 }
 
-func (d *DP832) Measure(ch Channel) (Measurement, error) {
+func (d *DP800) Measure(ch Channel) (Measurement, error) {
 	var m Measurement
 	cmd := fmt.Sprintf("MEAS:ALL? %s", chStrMap[ch])
 

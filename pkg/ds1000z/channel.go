@@ -1,4 +1,4 @@
-package ds1054z
+package ds1000z
 
 type Channel int
 
